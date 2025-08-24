@@ -35,6 +35,8 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	compileOnly 'org.projectlombok:lombok'
+	implementation "org.eclipse.jetty.http2:http2-client:11.0.24"
+	implementation "org.eclipse.jetty:jetty-client:11.0.24"
 }
 
 tasks.named('test') {

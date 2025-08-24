@@ -1,15 +1,14 @@
 package com.sustaining.easymockserver.core;
 
 import com.sustaining.easymockserver.model.Expectation;
-import com.sustaining.easymockserver.model.MockHttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
+@Component
 public class ExpectationsHolder {
   private static final Logger LOGGER = LoggerFactory.getLogger(ExpectationsHolder.class);
   private final Map<Integer, Expectation> expectations = new HashMap<>();
@@ -28,7 +27,7 @@ public class ExpectationsHolder {
 
   public Expectation getMatchingExpectation(final String method, final String path) {
     for (Expectation expectation : expectations.values()) {
-      MockHttpRequest req = expectation.getHttpRequest();
+      Expectation.MockHttpRequest req = expectation.getHttpRequest();
       if (req != null && method.equalsIgnoreCase(req.getMethod()) && path.equals(req.getPath())) {
         LOGGER.info("expectation matched: {}", expectation);
         return expectation;
