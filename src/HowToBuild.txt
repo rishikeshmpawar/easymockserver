@@ -1,0 +1,9 @@
+** On M1 Mac
+    * Start rancher-desktop
+    * docker buildx rm multiarch-builder
+    * docker buildx create --name multiarch-builder --use
+    * docker buildx build --platform linux/amd64 -t easymockserver:1.2 --load .
+    * docker save -o easymockserver-12.tar easymockserver:1.2
+    * mv easymockserver-12.tar RELEASES/
+    
+
