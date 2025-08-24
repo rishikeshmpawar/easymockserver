@@ -126,11 +126,11 @@ public class Expectation {
     private static final Logger LOGGER = LoggerFactory.getLogger(MockCallback.class);
     private String method = "POST";
     private String url;
-    private long delay = 0;
+    private int delay = 0;
     private String body = "{}";
 
     private Map<String, String> headers;
-    private final long DEFAULT_DELAY = 100;
+    private final int DEFAULT_DELAY = 100;
 
     public String getMethod() {
       return method;
@@ -148,7 +148,7 @@ public class Expectation {
       this.url = url;
     }
 
-    public long getDelay() {
+    public int getDelay() {
       if (delay == 0 || delay < 50 ) {
         LOGGER.debug("delay({}) is 0 or <50 hence using default delay({})", delay, DEFAULT_DELAY);
         return DEFAULT_DELAY;
@@ -156,7 +156,7 @@ public class Expectation {
       return delay;
     }
 
-    public void setDelay(long delay) {
+    public void setDelay(int delay) {
       this.delay = delay;
     }
 
